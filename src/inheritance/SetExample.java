@@ -17,6 +17,8 @@ public class SetExample
 		//This is example code for a simple HashSet
 //		Set<Integer> mySet = new HashSet<Integer>();
 //		
+		//This file is working. 
+		//-Paul
 //		mySet.add(1);
 //		mySet.add(2);
 //		mySet.add(3);
