@@ -14,4 +14,9 @@ public class BWCartridge implements ICartridge
 		return "50%";
 	}
 
+	@Override
+	public String printColor() {
+		return "Black and White";
+	}
+
 }

@@ -1,5 +1,9 @@
 package inheritance;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +12,7 @@ import java.util.Map;
 
 //implements allow us to interface with IMachine
 //<T> this allows the class to take in a type 
-public class Printer<T> implements IMachine
+public class Printer<T extends ICartridge> implements IMachine
 {
 	//data or properties of our printer
 	
@@ -69,7 +73,11 @@ public class Printer<T> implements IMachine
 			onStatus = " is Off!";
 		}
 		
-		String textToPrint = modelNumber + onStatus;
+
+
+		String textToPrint = getTextFromFile();
+//		String textToPrint = modelNumber + onStatus;
+//		textToPrint += "|||" + cartridge.printColor() + "|||";
 		int pageNumber = 1;
 	
 		while( copies > 0 && paperTray.isEmpty() )
@@ -88,9 +96,49 @@ public class Printer<T> implements IMachine
 		
 	}
 
+	private String getTextFromFile() 
+	{
+		FileReader reader = null;
+		BufferedReader bReader = null;
+		String allText = "";
+		try {
+			reader = new FileReader("C:\\Users\\James Handshoe\\Documents\\temp\\test.txt");
+			bReader = new BufferedReader(reader);
+			
+			String line;
+			while(( line = bReader.readLine() ) != null)
+			{
+				allText += line + "\n";
+			}
+			
+			return allText;
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally
+		{
+			if(bReader != null)
+				try {
+					reader.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
+		
+		return "";
+	}
+
+
+
 	public void outPutPage(int pageNumber) 
 	{
-		System.out.print(pagesMap.get(pageNumber).getText());
+		//System.out.print(pagesMap.get(pageNumber).getText());
 	}
 //	public void outPutPages()
 //	{

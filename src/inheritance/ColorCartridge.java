@@ -1,7 +1,19 @@
 package inheritance;
 
-public class ColorCartridge implements ICartridge
+public enum ColorCartridge implements ICartridge
 {
+	RED("Red"),
+	BLUE("Blue"),
+	GREEN("Green"),
+	YELLOW("Yellow");
+	
+	private final String colorText;
+	
+	private ColorCartridge(String colorText) 
+	{
+		this.colorText = colorText;
+	}
+	
 	@Override 
 	public String toString()
 	{
@@ -11,5 +23,10 @@ public class ColorCartridge implements ICartridge
 	@Override
 	public String getFillPercentage() {
 		return "75%";
+	}
+
+	@Override
+	public String printColor() {
+		return colorText;
 	}
 }
