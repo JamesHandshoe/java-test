@@ -6,7 +6,7 @@ public class PrintJob {
 	{
 		Printer<ColorCartridge> printer2 = new Printer<ColorCartridge>(true, "3456newprinter", ColorCartridge.RED);
 		
-		printer2.loadPaper(10);
+		printer2.loadPaper(5);
 		printer2.print(5);
 		printer2.outPutPage(5);
 	}
